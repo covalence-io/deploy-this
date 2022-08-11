@@ -1,8 +1,9 @@
 import type { NextPage } from "next";
 import { useState, useEffect } from "react";
+import { Platform } from "../interfaces";
 
 const Home: NextPage = () => {
-    const [platforms, setPlatforms] = useState<string[]>([]);
+    const [platforms, setPlatforms] = useState<Platform[]>([]);
 
     useEffect(() => {
         fetch("/api/platforms")
@@ -14,10 +15,10 @@ const Home: NextPage = () => {
     return (
         <div className="grid h-screen place-items-center">
             <div>
-                <h1 className="text-indigo-700 text-8xl">Deploy This!</h1>
-                {platforms.map((pl, index) => (
-                    <p className="text-3xl text-center text-indigo-500" key={`platform-${index}-${pl}`}>
-                        {pl}
+                <h1 className="mb-10 text-indigo-700 text-8xl">Deploy This!</h1>
+                {platforms.map(platform => (
+                    <p className={`text-3xl text-center ${platform.isComplete ? "text-green-500" : "text-indigo-500"}`} key={`platform-${platform.name}`}>
+                        {platform.name}
                     </p>
                 ))}
             </div>

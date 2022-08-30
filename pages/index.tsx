@@ -3,14 +3,12 @@ import { useState, useEffect } from "react";
 import { Platform } from "../interfaces";
 
 const Home: NextPage = () => {
-    const [platforms, setPlatforms] = useState<Platform[]>([]);
-
-    useEffect(() => {
-        fetch("/api/platforms")
-            .then(res => res.json())
-            .then(setPlatforms)
-            .catch(console.error);
-    }, []);
+    const [platforms, setPlatforms] = useState<Platform[]>([
+        { name: "Vercel", isComplete: true },
+        { name: "Heroku", isComplete: true },
+        { name: "DigitalOcean", isComplete: true },
+        { name: "AWS", isComplete: false }
+    ]);
 
     return (
         <div className="grid h-screen place-items-center">

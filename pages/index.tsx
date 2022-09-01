@@ -8,7 +8,7 @@ const Home: NextPage = () => {
         { name: "Heroku", isComplete: true },
         { name: "DigitalOcean", isComplete: true },
         { name: "AWS", isComplete: true },
-        { name: "Netlify", isComplete: false }
+        { name: "Netlify", isComplete: true }
     ]);
 
     return (
